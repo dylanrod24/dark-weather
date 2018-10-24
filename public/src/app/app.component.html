@@ -5,5 +5,13 @@
 
 <mat-toolbar color="primary" role="heading">
     <span>Dark Weather</span>
+    <span class="fill-space"></span>
+    <span class="search">
+        <form class="search-form">
+            <mat-form-field class="search-input">
+                <input matInput placeholder="Search city">
+            </mat-form-field>
+        </form>
+    </span>
 </mat-toolbar>
 <router-outlet></router-outlet>
