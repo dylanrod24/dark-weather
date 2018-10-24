@@ -6,10 +6,12 @@ import { MatInputModule } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CityComponent } from './city/city.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    CityComponent,
   ],
   imports: [
     BrowserModule,

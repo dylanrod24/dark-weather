@@ -1,6 +1,12 @@
 .fill-space {
-    flex: 1 1 auto;
+    flex: 0.8 1 auto;
 }
 .search {
     flex: 1 1 auto;
+}
+.search-input {
+    padding-top: 12px;
+}
+.name {
+    padding-top: 7px;
 }
