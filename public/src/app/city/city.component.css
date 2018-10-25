@@ -1,0 +1,21 @@
+/* Styles for tab containers */
+.small-box, .large-box, .medium-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 16px;
+    padding: 16px;
+    border-radius: 8px;
+}
+.small-box {
+    height: 250px;
+    width: 250px;
+}
+.large-box {
+    height: 500px;
+    width: 500px;
+}
+.medium-box {
+    height: 300px;
+    width: 300px;
+}
