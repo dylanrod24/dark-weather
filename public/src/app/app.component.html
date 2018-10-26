@@ -1,17 +1,32 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <head>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-</head>
 
-<mat-toolbar class="nav" color="primary" role="heading">
-    <span class="name">Dark Weather</span>
-    <span class="fill-space"></span>
-    <span class="search">
-        <form class="search-form">
-            <mat-form-field class="search-input">
-                <input matInput placeholder="Search city">
-            </mat-form-field>
-        </form>
-    </span>
-</mat-toolbar>
+</head>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Dark Weather</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-tab nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-tab nav-link" href="#">Features</a>
+      </li>
+      <li class="search">
+        <div class="form-group">
+          <input type="text" class="form-control form-control-sm" id="search" aria-describedby="search" placeholder="Search City">
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  
+</div>
+
 <router-outlet></router-outlet>

@@ -1,12 +1,9 @@
-.fill-space {
-    flex: 0.8 1 auto;
-}
 .search {
-    flex: 1 1 auto;
+    position: relative;
+    top: 8px;
+    left: 550px;
 }
-.search-input {
-    padding-top: 12px;
-}
-.name {
-    padding-top: 7px;
+.nav-tab {
+    position: relative;
+    top: 6px;
 }

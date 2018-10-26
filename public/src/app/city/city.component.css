@@ -1,4 +1,4 @@
-/* Styles for tab containers */
+/* Styles for tab containers
 .small-box, .large-box, .medium-box {
     display: flex;
     align-items: center;
@@ -18,4 +18,4 @@
 .medium-box {
     height: 300px;
     width: 300px;
-}
+} */
