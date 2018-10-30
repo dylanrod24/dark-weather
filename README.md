@@ -1,2 +1,2 @@
 # dark-weather
-A weather application built with Node, Angular and Angular Material Design.
+A weather application built with Node, Angular and Bootstrap.
