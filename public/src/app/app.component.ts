@@ -9,18 +9,20 @@ import { HttpService } from './http.service';
 export class AppComponent implements OnInit {
   constructor(private _httpService: HttpService){}
 
-  weather = {summary: "", temperature: "", pressure: ""};
+  weather = {summary: "", temperature: "", pressure: "", windSpeed: "", dailyHigh: ""};
 
   ngOnInit(){
-    // this.getWeather();
+    this.getWeather();
   }
-  // getWeather(){
-  //   console.log("Weather loaded");
-  //   let city = this._httpService.getWeather('City');
-  //   city.subscribe((data: any) => {
-  //     this.weather.summary = data.currently.summary;
-  //     this.weather.temperature = data.currently.temperature;
-  //     this.weather.pressure = data.currently.pressure;
-  //   })
-  // }
+  getWeather(){
+    console.log("Weather loaded");
+    let city = this._httpService.getWeather('City');
+    city.subscribe((data: any) => {
+      this.weather.summary = data.currently.summary;
+      this.weather.temperature = data.main.temp;
+      this.weather.pressure = data.currently.pressure;
+      this.weather.windSpeed = data.wind.speed;
+      this.weather.dailyHigh = data.daily.data.temperatureHigh;
+    })
+  }
 }

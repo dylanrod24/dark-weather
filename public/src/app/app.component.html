@@ -1,4 +1,5 @@
 <!--The content below is only a placeholder and can be replaced.-->
+
 <head>
 
 </head>
@@ -16,17 +17,42 @@
       <li class="nav-item">
         <a class="nav-tab nav-link" href="#">Features</a>
       </li>
-      <li class="search">
-        <div class="form-group">
-          <input type="text" class="form-control form-control-sm" id="search" aria-describedby="search" placeholder="Search City">
-        </div>
-      </li>
+      <form>
+        <li class="search">
+          <div class="form-group">
+            <input type="text" class="form-control form-control-sm" id="search" aria-describedby="search" placeholder="Search City">
+          </div>
+        </li>
+      </form>
     </ul>
   </div>
 </nav>
 
 <div class="container-fluid">
-  
+  <div class="row">
+    <!-- Stats -->
+    <div class="col-md-4">
+      <div class="weather-stats card text-white bg-dark mb-3" style="max-width: 18rem;">
+        <div class="card-body">
+          <p class="card-text">Temperature: {{ weather.temperature }}</p>
+          <p class="card-text">Pressure:</p>
+          <p class="card-text">Wind Speed: {{ weather.windSpeed }}</p>
+        </div>
+      </div>
+    </div>
+    <!-- Forcast -->
+    <div class="col-md">
+      <div class="forcast card text-white bg-dark">
+        <div class="card-header">
+          Forcast
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">City</h5>
+          <p class="card-text">{{ weather.dailyHigh }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <router-outlet></router-outlet>
