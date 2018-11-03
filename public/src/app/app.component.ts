@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from './http.service';
+import * as io from 'socket.io-client';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,11 @@ export class AppComponent implements OnInit {
   ngOnInit(){
     this.getWeather();
     this.getForecast();
+
+    // Sockets connection to node server
+    const socket = io('http://localhost:4000');
+    console.log(socket);
+    socket.on('darksky', (data) => console.log(data));
   }
   // Gets single data
   getWeather(){
