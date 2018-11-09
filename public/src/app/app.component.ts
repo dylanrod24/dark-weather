@@ -10,8 +10,8 @@ import * as io from 'socket.io-client';
 export class AppComponent implements OnInit {
   constructor(private _httpService: HttpService){}
 
-  weather = {temperature: "", pressure: "", windSpeed: ""};
-  forecast = {name: "", tempMax: ""};
+  weather = {temperature: "", humidity: "", windSpeed: ""};
+  forecast = {tempMax: ""};
 
   ngOnInit(){
 
@@ -19,7 +19,8 @@ export class AppComponent implements OnInit {
     const socket = io('http://localhost:4000');
     console.log("socket connected to server");
     socket.on('temp', (temp) => this.weather.temperature = (temp));
-    // socket.on('pressure', (pressure) => this.weather.pressure = (pressure));
+    socket.on('windspeed', (windSpeed) => this.weather.windSpeed = (windSpeed));
+    socket.on('humidity', (humidity) => this.weather.humidity = (humidity));
 
   }
 }

@@ -1,7 +1,7 @@
-var express = require('express');
-var app = express();
-var http = require('http');
-var axios = require('axios');
+// Server
+const express = require('express');
+const app = express();
+const axios = require('axios');
 
 
 var getApiAndEmit = "TODO";
@@ -14,6 +14,8 @@ require('./server/config/routes.js')(app);
 var server = app.listen(4000, function(){
     console.log('on port 4000');
 });
+
+// Loading socket.io
 var io = require('socket.io')(server);
 
 let interval;
@@ -21,11 +23,12 @@ let interval;
 var getApiAndEmit = async socket => {
     try {
         const response = await axios.get(
-            "https://api.darksky.net/forecast/9f5c21e8b5dbe91f6f570d294de8a42b/34.0900,117.8903"
+            "https://api.darksky.net/forecast/9f5c21e8b5dbe91f6f570d294de8a42b/34.052235,-118.243683"
         );
         // Emitting data. It will be taken by the client.
         socket.emit('temp', response.data.currently.temperature);
-        // socket.emit('pressure', response.currently.pressure);
+        socket.emit('windspeed', response.data.currently.windSpeed);
+        socket.emit('humidity', response.data.currently.humidity);
     }
     catch (error) {
         console.log(`Error: ${error.code}`);
@@ -37,7 +40,7 @@ io.on('connection', socket => {
         if(interval) {
             clearInterval(interval);
         }
-        interval = setInterval(() => getApiAndEmit(socket), 60000);
+        interval = setInterval(() => getApiAndEmit(socket), 120000);
         socket.on('disconnect', () => {
             console.log("Client disconnected");
         });
