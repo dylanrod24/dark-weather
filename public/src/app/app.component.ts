@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from './http.service';
+import { HttpClient } from '@angular/common/http';
 import * as io from 'socket.io-client';
 
 @Component({
@@ -8,10 +9,14 @@ import * as io from 'socket.io-client';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  constructor(private _httpService: HttpService){}
-
-  weather = {temperature: "", humidity: "", windSpeed: ""};
+  constructor(private _httpService: HttpService, private http: HttpClient){
+    
+  }
+  coord = {lat: "", long: ""};
+  weather = {timezone: "", temperature: "", humidity: "", windSpeed: ""};
   forecast = {tempMax: ""};
+
+  
 
   ngOnInit(){
 
@@ -22,5 +27,12 @@ export class AppComponent implements OnInit {
     socket.on('windspeed', (windSpeed) => this.weather.windSpeed = (windSpeed));
     socket.on('humidity', (humidity) => this.weather.humidity = (humidity));
 
+  }
+
+  // For Google Maps Geocode API
+  getWeather(place) {
+    console.log("Get weather button clicked")
+    let location = this.getWeather(place);
+    location.subscribe((data: JSON) => );
   }
 }

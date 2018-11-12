@@ -15,11 +15,12 @@
       <li class="nav-item">
         <a class="nav-tab nav-link" href="#">Features</a>
       </li>
-      <form>
+      <form (submit)="getWeather()">
         <li class="search">
           <div class="form-group">
-            <input type="text" class="form-control form-control-sm" id="search" aria-describedby="search" placeholder="Search City">
+            <input type="text" class="form-control form-control-sm" id="search" aria-describedby="search" placeholder="Search City or Address">
           </div>
+          <button id="getWeather" type="submit" class="btn btn-info">Get weather</button>
         </li>
       </form>
     </ul>

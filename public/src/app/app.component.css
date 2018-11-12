@@ -3,6 +3,10 @@
     top: 8px;
     left: 400px;
 }
+#getWeather {
+    position: relative;
+    left: 200px;
+}
 .nav-tab {
     position: relative;
     top: 6px;

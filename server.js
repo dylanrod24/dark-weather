@@ -34,7 +34,7 @@ var getApiAndEmit = async socket => {
         console.log(`Error: ${error.code}`);
     }
 };
-
+// Socket connect/disconnect and interval
 io.on('connection', socket => {
     console.log("New client connected");
         if(interval) {
