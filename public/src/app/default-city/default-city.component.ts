@@ -24,19 +24,12 @@ export class DefaultCityComponent implements OnInit {
     socket.on('windspeed', (windSpeed) => this.weather.windSpeed = (windSpeed));
     socket.on('humidity', (humidity) => this.weather.humidity = (humidity));
   }
-
-  // For Google Maps place autocomplete api
-  getWeather(place) {
-    console.log("Get weather button clicked")
-    let place_id = this._httpService.getWeather(place);
-    place_id.subscribe((data: any) => this.place_id = data.predictions.place_id);
-    if(place_id != null) {
-      // For Google Maps geocode api
-      console.log("Sending place_id for coordinates");
-      let coord = this._httpService.getLatLng(this.place_id);
-      coord.subscribe((data: any) => this.coord = data.results.geometry.location);
-      console.log(this.coord);
-    }
-  }
+    // For Google Maps geocode api
+    // getLatLng
+    // console.log("Sending place_id for coordinates");
+    // let coord = this._httpService.getLatLng(this.place_id);
+    // coord.subscribe((data: any) => this.coord = data.results.geometry.location);
+    // console.log(this.coord);
+  
 
 }

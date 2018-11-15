@@ -23,7 +23,7 @@ let interval;
 var getApiAndEmit = async socket => {
     try {
         const response = await axios.get(
-            "https://api.darksky.net/forecast/9f5c21e8b5dbe91f6f570d294de8a42b/34.052235,-118.243683"
+            // "https://api.darksky.net/forecast/9f5c21e8b5dbe91f6f570d294de8a42b/34.052235,-118.243683"
         );
         // Emitting data. It will be taken by the client.
         socket.emit('temp', response.data.currently.temperature);

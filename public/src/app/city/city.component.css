@@ -1,21 +1,14 @@
-/* Styles for tab containers
-.small-box, .large-box, .medium-box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 16px;
-    padding: 16px;
-    border-radius: 8px;
+.weather-stats {
+    margin-top: 40px;
+    position: relative;
+    left: 45px;
+
 }
-.small-box {
-    height: 250px;
-    width: 250px;
+.forcast {
+    margin-top: 40px;
+    position: relative;
+    right: 45px;
 }
-.large-box {
-    height: 500px;
-    width: 500px;
+.forcast .card-body {
+    padding-bottom: 42px;
 }
-.medium-box {
-    height: 300px;
-    width: 300px;
-} */

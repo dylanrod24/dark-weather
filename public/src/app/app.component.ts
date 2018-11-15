@@ -8,18 +8,24 @@ import * as io from 'socket.io-client';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  constructor(private _httpService: HttpService){
-    
-  }
+  constructor(private _httpService: HttpService){}
   
+  search = {search: ""};
+  place_id = {place: ""};
 
   
 
   ngOnInit(){
 
     // Sockets connection to node server
-    
   }
 
+  // For Google Maps place autocomplete api
+  getWeather(place) {
+    console.log("Get weather button clicked")
+    let place_id = this._httpService.getWeather(place);
+    place_id.subscribe((data: any) => this.place_id = data.predictions.place_id);
+    console.log(place_id);
+  }
   
 }
