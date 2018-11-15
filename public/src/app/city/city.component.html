@@ -1,18 +1,27 @@
-<!-- Tabs for all weather data
-<mat-tab-group dynamicHeight>
-  <mat-tab label="Weather Stats">
-    <div class="small-box mat-elevation-z4">
-      weather stats
+
+<div class="container-fluid">
+    <div class="row">
+      <!-- Stats -->
+      <div class="col-md-4">
+        <div class="weather-stats card text-white bg-dark mb-3" style="max-width: 18rem;">
+          <div class="card-body">
+            <p class="card-text">Temperature: {{ weather.temperature }}</p>
+            <p class="card-text">Wind Speed: {{ weather.windSpeed }}</p>
+            <p class="card-text">Humidity: {{ weather.humidity }}</p>
+          </div>
+        </div>
+      </div>
+      <!-- Forcast -->
+      <div class="col-md">
+        <div class="forcast card text-white bg-dark">
+          <div class="card-header">
+            Forecast
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">{{ forecast.name }}</h5>
+            <p class="card-text">{{ forecast.tempMax }}</p>
+          </div>
+        </div>
+      </div>
     </div>
-  </mat-tab>
-  <mat-tab label="7 Day Forcast">
-    <div class="medium-box mat-elevation-z4">
-      7 day forcast
-    </div>
-  </mat-tab>
-  <mat-tab label="Radar">
-    <div class="large-box mat-elevation-z4">
-      radar
-    </div>
-  </mat-tab>
-</mat-tab-group> -->
+  </div>

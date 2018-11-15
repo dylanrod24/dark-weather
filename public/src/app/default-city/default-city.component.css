@@ -1,0 +1,14 @@
+.weather-stats {
+    margin-top: 40px;
+    position: relative;
+    left: 45px;
+
+}
+.forcast {
+    margin-top: 40px;
+    position: relative;
+    right: 45px;
+}
+.forcast .card-body {
+    padding-bottom: 42px;
+}

@@ -1,0 +1,26 @@
+<div class="container-fluid">
+  <div class="row">
+    <!-- Stats -->
+    <div class="col-md-4">
+      <div class="weather-stats card text-white bg-dark mb-3" style="max-width: 18rem;">
+        <div class="card-body">
+          <p class="card-text">Temperature: {{ weather.temperature }}</p>
+          <p class="card-text">Wind Speed: {{ weather.windSpeed }}</p>
+          <p class="card-text">Humidity: {{ weather.humidity }}</p>
+        </div>
+      </div>
+    </div>
+    <!-- Forcast -->
+    <div class="col-md">
+      <div class="forcast card text-white bg-dark">
+        <div class="card-header">
+          Forecast
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{ forecast.name }}</h5>
+          <p class="card-text">{{ forecast.tempMax }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

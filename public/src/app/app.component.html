@@ -20,38 +20,11 @@
           <div class="form-group">
             <input type="text" class="form-control form-control-sm" id="search" aria-describedby="search" placeholder="Search City or Address">
           </div>
-          <button id="getWeather" type="submit" class="btn btn-info">Get weather</button>
+          <button id="getWeather" type="submit" class="btn btn-info" [routerLink]="['/city']">Get weather</button>
         </li>
       </form>
     </ul>
   </div>
 </nav>
-
-<div class="container-fluid">
-  <div class="row">
-    <!-- Stats -->
-    <div class="col-md-4">
-      <div class="weather-stats card text-white bg-dark mb-3" style="max-width: 18rem;">
-        <div class="card-body">
-          <p class="card-text">Temperature: {{ weather.temperature }}</p>
-          <p class="card-text">Wind Speed: {{ weather.windSpeed }}</p>
-          <p class="card-text">Humidity: {{ weather.humidity }}</p>
-        </div>
-      </div>
-    </div>
-    <!-- Forcast -->
-    <div class="col-md">
-      <div class="forcast card text-white bg-dark">
-        <div class="card-header">
-          Forecast
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">{{ forecast.name }}</h5>
-          <p class="card-text">{{ forecast.tempMax }}</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
 <router-outlet></router-outlet>
