@@ -9,7 +9,7 @@ import { HttpService } from '../http.service';
 })
 export class CityComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _httpService: HttpService) { }
 
   weather = {timezone: "", temperature: "", humidity: "", windSpeed: ""};
 

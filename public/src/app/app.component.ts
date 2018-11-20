@@ -10,7 +10,7 @@ import * as io from 'socket.io-client';
 export class AppComponent implements OnInit {
   constructor(private _httpService: HttpService){}
   
-  search = {search: ""};
+  newSearch = {search: ""};
   place_id = {place: ""};
 
   

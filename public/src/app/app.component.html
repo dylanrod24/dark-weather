@@ -18,7 +18,7 @@
       <form (submit)="getWeather()">
         <li class="search">
           <div class="form-group">
-            <input type="text" class="form-control form-control-sm" id="search" name="search" [(ngModel)]="search" aria-describedby="search" placeholder="Search City or Address">
+            <input type="text" class="form-control form-control-sm" id="search" name="search" [(ngModel)]="newSearch.search" aria-describedby="search" placeholder="Search City or Address">
           </div>
           <button id="getWeather" type="submit" class="btn btn-info" [routerLink]="['/city']">Get weather</button>
         </li>
