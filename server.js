@@ -2,6 +2,8 @@
 const express = require('express');
 const app = express();
 const axios = require('axios');
+require('dotenv').config();
+var dsKey = process.env.DS_KEY;
 
 
 var getApiAndEmit = "TODO";
@@ -23,7 +25,7 @@ let interval;
 var getApiAndEmit = async socket => {
     try {
         const response = await axios.get(
-            // "https://api.darksky.net/forecast/9f5c21e8b5dbe91f6f570d294de8a42b/34.052235,-118.243683"
+            // `https://api.darksky.net/forecast/${dsKey}/34.052235,-118.243683`
         );
         // Emitting data. It will be taken by the client.
         socket.emit('temp', response.data.currently.temperature);
@@ -40,7 +42,7 @@ io.on('connection', socket => {
         if(interval) {
             clearInterval(interval);
         }
-        interval = setInterval(() => getApiAndEmit(socket), 120000);
+        interval = setInterval(() => getApiAndEmit(socket), 60000);
         socket.on('disconnect', () => {
             console.log("Client disconnected");
         });
