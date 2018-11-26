@@ -15,10 +15,10 @@
       <li class="nav-item">
         <a class="nav-tab nav-link" href="#">Features</a>
       </li>
-      <form (submit)="getWeather()">
+      <form (submit)="getCity()">
         <li class="search">
           <div class="form-group">
-            <input type="text" class="form-control form-control-sm" id="search" name="search" [(ngModel)]="newSearch.search" aria-describedby="search" placeholder="Search City or Address">
+            <input type="text" class="form-control form-control-sm" #search [formControl]="searchControl" name="search" aria-describedby="search" placeholder="Search City or Address">
           </div>
           <button id="getWeather" type="submit" class="btn btn-info" [routerLink]="['/city']">Get weather</button>
         </li>
