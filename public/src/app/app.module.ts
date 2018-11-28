@@ -23,11 +23,12 @@ import { AgmCoreModule } from '@agm/core';
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCCU62uzeDPHCiJtSIFtUVa5iq81EoSR_M',
       libraries: ['places']
     }),
-    ReactiveFormsModule,
+    
   ],
   providers: [HttpService],
   bootstrap: [AppComponent]

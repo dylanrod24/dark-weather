@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
 import * as io from 'socket.io-client';
+import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 
 @Component({
   selector: 'app-default-city',
@@ -8,15 +9,24 @@ import * as io from 'socket.io-client';
   styleUrls: ['./default-city.component.css']
 })
 export class DefaultCityComponent implements OnInit {
-
-  constructor(private _httpService: HttpService) { }
-
-  place_id = {place: ""};
-  coord = {lat: "", lng: ""};
+  public zoom: number;
+  public latitude: number;
+  public longitude: number;
+  coord = {
+    lat: this.latitude,
+    lng: this.longitude
+  }
   weather = {timezone: "", temperature: "", humidity: "", windSpeed: ""};
   forecast = {tempMax: ""};
+  
+  
+  constructor(private _httpService: HttpService) { }
 
   ngOnInit() {
+    
+    this.getCurrentPosition();
+    
+
     // Sockets connection to node server
     const socket = io('http://localhost:4000');
     console.log("sockets client connected to server");
@@ -24,12 +34,15 @@ export class DefaultCityComponent implements OnInit {
     socket.on('windspeed', (windSpeed) => this.weather.windSpeed = (windSpeed));
     socket.on('humidity', (humidity) => this.weather.humidity = (humidity));
   }
-    // For Google Maps geocode api
-    // getLatLng
-    // console.log("Sending place_id for coordinates");
-    // let coord = this._httpService.getLatLng(this.place_id);
-    // coord.subscribe((data: any) => this.coord = data.results.geometry.location);
-    // console.log(this.coord);
   
-
+  private getCurrentPosition() {
+    if ("geolocation in navigator") {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.coord.lat = position.coords.latitude;
+        this.coord.lng = position.coords.longitude;
+        this.zoom = 12;
+        console.log(this.coord);
+      });
+    }
+  }
 }
