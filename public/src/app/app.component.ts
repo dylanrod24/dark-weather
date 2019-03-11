@@ -3,7 +3,7 @@ import { HttpService } from './http.service';
 import * as io from 'socket.io-client';
 import { FormControl } from '@angular/forms';
 import { google } from '@agm/core/services/google-maps-types';
-import { MapsAPILoader } from '@agm/core';
+// import { MapsAPILoader } from '@agm/core';
 
 @Component({
   selector: 'app-root',
@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
 
   constructor(
     private _httpService: HttpService,
-    private mapsAPILoader: MapsAPILoader,
+    // private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone
   ) { }
 

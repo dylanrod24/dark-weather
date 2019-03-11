@@ -1,31 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
 import * as io from 'socket.io-client';
-import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 
 @Component({
   selector: 'app-default-city',
   templateUrl: './default-city.component.html',
   styleUrls: ['./default-city.component.css']
 })
+
 export class DefaultCityComponent implements OnInit {
-  public zoom: number;
-  public latitude: number;
-  public longitude: number;
-  coord = {
-    lat: this.latitude,
-    lng: this.longitude
-  }
-  weather = {timezone: "", temperature: "", humidity: "", windSpeed: ""};
-  forecast = {tempMax: ""};
-  
-  
+  location = {
+    lat: 5,
+    lng: 5
+  };
+  zoom: number;
+  weather = { timezone: "", temperature: "", humidity: "", windSpeed: "" };
+  forecast = { tempMax: "" };
+
   constructor(private _httpService: HttpService) { }
 
   ngOnInit() {
-    
+
     this.getCurrentPosition();
-    
+    this.getWeather();
+
 
     // Sockets connection to node server
     const socket = io('http://localhost:4000');
@@ -34,15 +32,34 @@ export class DefaultCityComponent implements OnInit {
     socket.on('windspeed', (windSpeed) => this.weather.windSpeed = (windSpeed));
     socket.on('humidity', (humidity) => this.weather.humidity = (humidity));
   }
-  
-  private getCurrentPosition() {
+
+  getCurrentPosition() {
     if ("geolocation in navigator") {
       navigator.geolocation.getCurrentPosition((position) => {
-        this.coord.lat = position.coords.latitude;
-        this.coord.lng = position.coords.longitude;
+        this.location.lat = position.coords.latitude;
+        this.location.lng = position.coords.longitude;
+        console.log(this.location);
         this.zoom = 12;
-        console.log(this.coord);
       });
     }
+    else {
+      alert("Ooops, sorry couldn't find your location or Geolocation is not supported in your browser.");
+    }
   }
+
+  getWeather() {
+    var getData = this._httpService.callWeather(this.location);
+    console.log("from get weather: ", this.location);
+    getData.subscribe((data: any) => {
+      console.log(data);
+    },
+      (error: any) => {
+        console.log(error);
+      }
+    )
+  }
+
+
+
+
 }
