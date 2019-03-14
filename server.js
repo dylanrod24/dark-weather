@@ -22,19 +22,19 @@ var io = require('socket.io')(server);
 
 // let interval;
 // Getting data from Dark Sky
-var getApiAndEmit = async socket => {
-    try {
-        const response = await axios.get(
-            // `https://api.darksky.net/forecast/${dsKey}/lat,lng`
-        );
-        // Emitting data. It will be taken by the client.
-        socket.emit('temp', response.data.currently.temperature);
-        socket.emit('windspeed', response.data.currently.windSpeed);
-        socket.emit('humidity', response.data.currently.humidity);
-    } catch (error) {
-        console.log(`Error: ${error.code}`);
-    }
-};
+// var getApiAndEmit = async socket => {
+//     try {
+//         const response = await axios.get(
+//             // `https://api.darksky.net/forecast/${dsKey}/lat,lng`
+//         );
+//         // Emitting data. It will be taken by the client.
+//         socket.emit('temp', response.data.currently.temperature);
+//         socket.emit('windspeed', response.data.currently.windSpeed);
+//         socket.emit('humidity', response.data.currently.humidity);
+//     } catch (error) {
+//         console.log(`Error: ${error.code}`);
+//     }
+// };
 // Socket connect/disconnect and interval
 io.on('connection', socket => {
     console.log("New client connected");

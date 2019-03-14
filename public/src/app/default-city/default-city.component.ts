@@ -9,55 +9,68 @@ import * as io from 'socket.io-client';
 })
 
 export class DefaultCityComponent implements OnInit {
-  location = {
-    lat: 5,
-    lng: 5
-  };
   zoom: number;
-  weather = { timezone: "", temperature: "", humidity: "", windSpeed: "" };
-  forecast = { tempMax: "" };
+  weather: any;
+  temp: any;
+  windSpeed: any;
+  humidity: any;
 
   constructor(private _httpService: HttpService) { }
 
   ngOnInit() {
 
-    this.getCurrentPosition();
-    this.getWeather();
+    // this.getCurrentPosition();
+    // this.getWeather();
 
 
     // Sockets connection to node server
-    const socket = io('http://localhost:4000');
-    console.log("sockets client connected to server");
-    socket.on('temp', (temp) => this.weather.temperature = (temp));
-    socket.on('windspeed', (windSpeed) => this.weather.windSpeed = (windSpeed));
-    socket.on('humidity', (humidity) => this.weather.humidity = (humidity));
-  }
+    // const socket = io('http://localhost:4000');
+    // console.log("sockets client connected to server");
 
-  getCurrentPosition() {
-    if ("geolocation in navigator") {
-      navigator.geolocation.getCurrentPosition((position) => {
-        this.location.lat = position.coords.latitude;
-        this.location.lng = position.coords.longitude;
-        console.log(this.location);
-        this.zoom = 12;
-      });
-    }
-    else {
-      alert("Ooops, sorry couldn't find your location or Geolocation is not supported in your browser.");
-    }
-  }
-
-  getWeather() {
-    var getData = this._httpService.callWeather(this.location);
-    console.log("from get weather: ", this.location);
-    getData.subscribe((data: any) => {
-      console.log(data);
-    },
-      (error: any) => {
-        console.log(error);
+    this._httpService.callWeather()
+    .subscribe(
+      (data) => {
+        this.weather = data;
+        console.log(data);
+        this.temp = this.weather.main.temp;
+        this.windSpeed = this.weather.wind.speed;
+        this.humidity = this.weather.main.humidity;
+      },
+      (err) => {
+        console.log("Server returned this error: ", err);
+      },
+      () => {
+        console.log("Completed");
       }
-    )
+    );
+    console.log("Response from component");
   }
+
+  // getCurrentPosition() {
+  //   if ("geolocation in navigator") {
+  //     navigator.geolocation.getCurrentPosition((position) => {
+  //       this.location.lat = position.coords.latitude;
+  //       this.location.lng = position.coords.longitude;
+  //       console.log(this.location);
+  //       this.zoom = 12;
+  //     });
+  //   }
+  //   else {
+  //     alert("Ooops, sorry couldn't find your location or Geolocation is not supported in your browser.");
+  //   }
+  // }
+
+  // getWeather() {
+  //   var getData = this._httpService.callWeather(this.location);
+  //   console.log("from get weather: ", this.location);
+  //   getData.subscribe((data: any) => {
+  //     console.log(data);
+  //   },
+  //     (error: any) => {
+  //       console.log(error);
+  //     }
+  //   )
+  // }
 
 
 
